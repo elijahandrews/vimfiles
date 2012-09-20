@@ -152,3 +152,8 @@ if has("statusline") && !&cp
   set statusline+=Buf:#%n
   set statusline+=[%b][0x%B]
 endif
+
+"""""""""""""""MY STUFF"""""""""""""""""""""
+set number "show line numbers
+set nocursorline "for some reason was slowing down scrolling
+nnoremap <leader>w <C-w>v<C-w>l
