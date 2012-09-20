@@ -1,8 +1,9 @@
-Mislav's vim configuration
+Elijah's fork of Mislav's vim configuration
 ==========================
 
 Thanks to these guys:
 
+* [Mislav Marohnić](http://mislav.uniqpath.com/)
 * [Gary Bernhardt](http://destroyallsoftware.com),
 * [Drew Neil](http://vimcasts.org),
 * [Tim Pope](http://tbaggery.com),
@@ -24,6 +25,18 @@ Prerequisites: ruby, git.
 
 This will install "~/.vimrc" and "~/.gvimrc" symlinks that point to
 files inside the ".vim" directory.
+
+## Updating:
+
+To update plugins, run:
+
+`git submodule foreach git pull origin master`
+
+## Adding new plugins:
+
+To add new plugins as submodules, run:
+
+`git submodule add repo bundle/plugin_name`
 
 ## Features:
 
