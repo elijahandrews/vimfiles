@@ -52,3 +52,6 @@
 [submodule "bundle/liquid"]
 	path = bundle/liquid
 	url = https://github.com/tpope/vim-liquid
+[submodule "bundle/numbertoggle"]
+	path = bundle/numbertoggle
+	url = https://github.com/jeffkreeftmeijer/vim-numbertoggle.git
