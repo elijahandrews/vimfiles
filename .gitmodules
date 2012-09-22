@@ -55,3 +55,6 @@
 [submodule "bundle/numbertoggle"]
 	path = bundle/numbertoggle
 	url = https://github.com/jeffkreeftmeijer/vim-numbertoggle.git
+[submodule "bundle/mac-classic-theme"]
+	path = bundle/mac-classic-theme
+	url = https://github.com/nelstrom/vim-mac-classic-theme.git
