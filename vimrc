@@ -14,21 +14,23 @@ filetype plugin indent on
 
 runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
 
+let g:solarized_termcolors=256
 syntax enable
 if has('gui_running')
   set background=light
+  colorscheme mac_classic
 else
   set background=dark
+  colorscheme solarized
 endif
-let g:solarized_termcolors=256
-colorscheme solarized
 
-set nonumber    " line numbers aren't needed
+"set nonumber    " line numbers aren't needed
 set ruler       " show the cursor position all the time
 set cursorline  " highlight the line of the cursor
 set showcmd     " show partial commands below the status line
-set shell=bash  " avoids munging PATH under zsh
-let g:is_bash=1 " default shell syntax
+"set shell=bash  " avoids munging PATH under zsh
+"let g:is_bash=1 " default shell syntax
+set shell=zsh
 set history=200 " remember more Ex commands
 set scrolloff=3 " have some context around the current line always on screen
 
@@ -86,7 +88,7 @@ if has("autocmd")
 endif
 
 " don't use Ex mode, use Q for formatting
-map Q gq
+"map Q gq
 
 " clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
@@ -157,3 +159,34 @@ endif
 set number "show line numbers
 set nocursorline "for some reason was slowing down scrolling
 nnoremap <leader>w <C-w>v<C-w>l
+let g:netrw_preview = 1 "press p to preview file it netrw
+cabbr <expr> %% expand('%:p:h') "makes %% the directory of current file when opening new files
+let g:CommandTMatchWindowAtTop = 0 "makes command-t matched file show at bottom of list (near prompt)
+nnoremap <silent> K :GitGrep <cword><CR> "K to grep for current word
+nnoremap <silent> vv <C-w>v "vv vertical split
+
+
+
+
+"""""Smart Window Close(from https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/yadr-window-killer.vim)"""""""
+" Use Q to intelligently close a window 
+" (if there are multiple windows into the same buffer)
+" or kill the buffer entirely if it's the last window looking into that
+" buffer
+function! CloseWindowOrKillBuffer()
+  let number_of_windows_to_this_buffer = len(filter(range(1, winnr('$')), "winbufnr(v:val) == bufnr('%')"))
+
+  " We should never bdelete a nerd tree
+  if matchstr(expand("%"), 'NERD') == 'NERD'
+    wincmd c
+    return
+  endif
+
+  if number_of_windows_to_this_buffer > 1
+    wincmd c
+  else
+    bdelete
+  endif
+endfunction
+
+nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
