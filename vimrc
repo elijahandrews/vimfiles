@@ -19,6 +19,7 @@ syntax enable
 if has('gui_running')
   set background=light
   colorscheme mac_classic
+  " colorscheme solarized
 else
   set background=dark
   colorscheme solarized
@@ -111,6 +112,8 @@ map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 
+map <leader>m :ls<CR>:e #
+
 let g:CommandTMaxHeight=10
 let g:CommandTMinHeight=4
 
@@ -190,3 +193,4 @@ function! CloseWindowOrKillBuffer()
 endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
+map <leader>t :NERDTreeToggle<CR>
