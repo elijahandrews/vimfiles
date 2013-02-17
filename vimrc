@@ -172,7 +172,7 @@ nnoremap <silent> vv <C-w>v "vv vertical split
 
 
 """""Smart Window Close(from https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/yadr-window-killer.vim)"""""""
-" Use Q to intelligently close a window 
+" Use Q to intelligently close a window
 " (if there are multiple windows into the same buffer)
 " or kill the buffer entirely if it's the last window looking into that
 " buffer
@@ -194,3 +194,8 @@ endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 map <leader>t :NERDTreeToggle<CR>
+
+if filereadable(".vim.custom")
+  so .vim.custom
+endif
+
