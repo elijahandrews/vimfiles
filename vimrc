@@ -199,3 +199,4 @@ if filereadable(".vim.custom")
   so .vim.custom
 endif
 
+imap jj <Esc>
