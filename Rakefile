@@ -1,4 +1,4 @@
-task :default => [:tmp_dirs, :update, :command_t, :link]
+task :default => [:update, :link, :macvim_check]
 
 desc %(Bring bundles up to date)
 task :update do
@@ -8,11 +8,14 @@ end
 
 desc %(Update each submodule from its upstream)
 task :submodule_pull do
-  system %[git submodule foreach '
-        git pull --quiet --ff-only --no-rebase origin master &&
-        git log --no-merges --pretty=format:"%s %Cgreen(%ar)%Creset" --date=relative master@{1}..
-        echo
-      ']
+  system <<-EOS
+    git submodule foreach '
+      rev=$(git rev-parse HEAD)
+      git pull --quiet --ff-only --no-rebase origin master &&
+      git --no-pager log --no-merges --pretty=format:"%s %Cgreen(%ar)%Creset" --date=relative ${rev}..
+      echo
+    '
+  EOS
 end
 
 desc %(Make ~/.vimrc and ~/.gvimrc symlinks)
@@ -23,28 +26,6 @@ task :link do
       warn "~/.#{script} already exists"
     else
       ln_s File.join('.vim', script), dotfile
-    end
-  end
-end
-
-task :tmp_dirs do
-  mkdir_p "_backup"
-  mkdir_p "_temp"
-end
-
-desc %(Compile Command-T plugin)
-task :command_t => :macvim_check do
-  vim = which('mvim') || which('vim') or abort "vim not found on your system"
-  ruby = read_ruby_version(vim)
-
-  Dir.chdir "bundle/command-t/ruby/command-t" do
-    if ruby
-      puts "Compiling Command-T plugin..."
-      sh(*Array(ruby).concat(%w[extconf.rb]))
-      sh "make clean && make"
-    else
-      warn color('Warning:', 31) + " Can't compile Command-T, no ruby support in #{vim}"
-      sh "make clean"
     end
   end
 end
@@ -60,13 +41,6 @@ def color msg, code
   if $stderr.tty? then "\e[1;#{code}m#{msg}\e[m"
   else msg
   end
-end
-
-# Read which ruby version is vim compiled against
-def read_ruby_version vim
-  script = %{require "rbconfig"; print File.join(RbConfig::CONFIG["bindir"], RbConfig::CONFIG["ruby_install_name"])}
-  version = `#{vim} --nofork --cmd 'ruby #{script}' --cmd 'q' 2>&1 >/dev/null | grep -v 'Vim: Warning'`.strip
-  version unless version.empty? or version.include?("command is not available")
 end
 
 # Cross-platform way of finding an executable in the $PATH.
