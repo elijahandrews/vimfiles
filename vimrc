@@ -16,7 +16,7 @@ filetype plugin indent on
 runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
 
 " let g:solarized_termcolors=256
-" syntax enable
+syntax enable
 " if has('gui_running')
 "   set background=light
 "   colorscheme mac_classic
@@ -151,6 +151,7 @@ map <leader>m :ls<CR>:e #
 let g:CommandTMaxHeight=10
 let g:CommandTMinHeight=4
 map <leader>F :CtrlP %%<cr>
+map <leader>f :CtrlP %%<cr>
 map <leader>b :CtrlPBuffer<cr>
 " let g:ctrlp_root_markers = ['.git', 'Rakefile']
 let g:ctrlp_working_path_mode = 0
