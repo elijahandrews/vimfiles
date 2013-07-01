@@ -244,8 +244,9 @@ nmap <silent> <leader>cd :lcd %:h<CR>
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 
 " Quick buffer switching
-map <C-j> :bprev<CR>
-map <C-k> :bnext<CR>
+map <silent> <C-j> :bprev<CR>
+map <silent> <C-k> :bnext<CR>
 set hidden
 
 let g:netrw_liststyle = 3
+map <leader>a :Ack 
