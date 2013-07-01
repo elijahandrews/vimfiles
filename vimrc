@@ -15,18 +15,19 @@ filetype plugin indent on
 
 runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
 
-" let g:solarized_termcolors=256
+let &t_Co=256
+let g:solarized_termcolors=256
 syntax enable
-" if has('gui_running')
-"   set background=light
-"   colorscheme mac_classic
+if has('gui_running')
+  " set background=light
+"   " colorscheme mac_classic
 "   " colorscheme solarized
-" else
-"   set background=dark
-"   colorscheme solarized
-" endif
+  color railscasts
+else
+  set background=light
+  colorscheme solarized
+endif
 
-color railscasts
 set synmaxcol=800           " don't try to highlight long lines
 
 "set nonumber    " line numbers aren't needed
@@ -241,3 +242,10 @@ nmap <silent> <leader>cd :lcd %:h<CR>
 "
 " " Create the directory containing the file in the buffer
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
+
+" Quick buffer switching
+map <C-j> :bprev<CR>
+map <C-k> :bnext<CR>
+set hidden
+
+let g:netrw_liststyle = 3
