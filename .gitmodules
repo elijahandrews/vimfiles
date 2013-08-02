@@ -91,3 +91,9 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+[submodule "bundle/vividchalk"]
+	path = bundle/vividchalk
+	url = https://github.com/tpope/vim-vividchalk.git
+[submodule "bundle/tomorrow"]
+	path = bundle/tomorrow
+	url = https://github.com/chriskempson/vim-tomorrow-theme.git

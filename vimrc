@@ -18,15 +18,15 @@ runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
 let &t_Co=256
 let g:solarized_termcolors=256
 syntax enable
-if has('gui_running')
+" if has('gui_running')
   " set background=light
 "   " colorscheme mac_classic
 "   " colorscheme solarized
-  color railscasts
-else
-  set background=light
-  colorscheme solarized
-endif
+  color jellybeans
+" else
+  " set background=light
+  " colorscheme solarized
+" endif
 
 set synmaxcol=800           " don't try to highlight long lines
 
@@ -152,10 +152,10 @@ map <leader>m :ls<CR>:e #
 let g:CommandTMaxHeight=10
 let g:CommandTMinHeight=4
 map <leader>F :CtrlP %%<cr>
-map <leader>f :CtrlP %%<cr>
+map <leader>f :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 " let g:ctrlp_root_markers = ['.git', 'Rakefile']
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_extensions = ['tag', 'buffertag']
 
 let g:turbux_command_test_unit = 'ruby -Ilib:test'
@@ -179,12 +179,6 @@ command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
 
 set splitright
 set splitbelow
-
-" disable cursor keys in normal mode
-map <Left>  :echo "no!"<cr>
-map <Right> :echo "no!"<cr>
-map <Up>    :echo "no!"<cr>
-map <Down>  :echo "no!"<cr>
 
 if has("statusline") && !&cp
   set laststatus=2              " always show the status bar
@@ -263,3 +257,5 @@ function! MoveFile(newspec)
 endfunction
 
 command! -nargs=1 -complete=file -bar MoveFile call MoveFile('<args>')
+
+call togglebg#map("<F4>")
