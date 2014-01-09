@@ -18,10 +18,11 @@ let g:solarized_termcolors=256
 syntax enable
 if has('gui_running')
   set background=light
-  colorscheme mac_classic
+  colorscheme jellybeans
   " colorscheme solarized
 else
   set background=dark
+  set t_Co=256
   colorscheme solarized
 endif
 
