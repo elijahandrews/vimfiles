@@ -108,7 +108,8 @@ map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
 map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 " http://vimcasts.org/e/14
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
@@ -165,7 +166,6 @@ set nocursorline "for some reason was slowing down scrolling
 nnoremap <leader>w <C-w>v<C-w>l
 let g:netrw_preview = 1 "press p to preview file it netrw
 cabbr <expr> %% expand('%:p:h') "makes %% the directory of current file when opening new files
-let g:CommandTMatchWindowAtTop = 0 "makes command-t matched file show at bottom of list (near prompt)
 nnoremap <silent> K :GitGrep <cword><CR> "K to grep for current word
 nnoremap <silent> vv <C-w>v "vv vertical split
 
