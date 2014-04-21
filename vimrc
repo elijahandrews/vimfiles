@@ -201,3 +201,8 @@ nmap <silent> <leader>cd :lcd %:h<CR>
 "
 " " Create the directory containing the file in the buffer
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
+
+" hybrid number mode (vim 7.4+ only)
+" http://jeffkreeftmeijer.com/2013/vims-new-hybrid-line-number-mode/
+set relativenumber
+set number
