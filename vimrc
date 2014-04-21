@@ -95,7 +95,7 @@ endif
 " clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
 
-let mapleader=","
+let mapleader=" "
 
 " paste lines from unnamed register and fix indentation
 nmap <leader>p pV`]=
